@@ -44,7 +44,7 @@
           
           <!-- Day Columns -->
           <% (@current_week_start..@current_week_end).each do |date| %>
-            <div style="position: relative; min-height: 70px; border-right: 1px solid var(--border-color); border-bottom: 1px solid #cbd5e0; background: <%= date == Date.current ? '#fafcff' : 'white' %>;">
+            <div style="position: relative; min-height: 100px; border-right: 1px solid var(--border-color); border-bottom: 1px solid #cbd5e0; background: <%= date == Date.current ? '#fafcff' : 'white' %>;">
               <% day_appointments = @appointments_by_date[date] || [] %>
               <% day_appointments.each do |appt| %>
                 <% appt_hour = appt.date_time.hour %>
