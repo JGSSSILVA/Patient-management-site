@@ -37,7 +37,7 @@ en:
   cancel: "Cancel"
   view_details: "View Details"
   no_summary: "No summary recorded."
-  add_to_google_calendar: "Add to Google Calendar"
+  add_to_google_calendar: "Add to"
   
   # Exams
   exams: "Exams"
