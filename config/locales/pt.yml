@@ -74,6 +74,10 @@ pt:
   next_appointments: "Próximas Marcações"
   and_more: "E %{count} mais..."
   no_upcoming: "Sem consultas agendadas."
+  previous_week: "Semana Anterior"
+  next_week: "Próxima Semana"
+  today: "Hoje"
+  no_appointments_short: "Sem consultas"
   
   # Patient List
   search_patients: "Pesquisar pacientes..."

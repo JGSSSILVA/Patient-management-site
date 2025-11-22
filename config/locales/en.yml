@@ -74,6 +74,10 @@ en:
   next_appointments: "Next Appointments"
   and_more: "And %{count} more..."
   no_upcoming: "No upcoming appointments."
+  previous_week: "Previous Week"
+  next_week: "Next Week"
+  today: "Today"
+  no_appointments_short: "No appointments"
   
   # Patient List
   search_patients: "Search patients..."
