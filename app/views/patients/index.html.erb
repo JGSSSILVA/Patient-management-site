@@ -1,0 +1,45 @@
+<h1>Patients</h1>
+
+<div class="search-bar">
+  <%= form_with url: patients_path, method: :get, data: { turbo_frame: "patients_list", turbo_action: "advance" } do |form| %>
+    <%= form.text_field :query, placeholder: "Search patients...", value: params[:query], class: "search-input" %>
+    <%= form.submit "Search", class: "button" %>
+  <% end %>
+</div>
+
+<div class="actions">
+  <%= link_to "New Patient", new_patient_path, class: "button primary" %>
+</div>
+
+<%= turbo_frame_tag "patients_list" do %>
+  <div class="patients-list">
+    <% if @patients.any? %>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Identifier</th>
+            <th>DOB</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @patients.each do |patient| %>
+            <tr>
+              <td><%= link_to patient.name, patient, data: { turbo_frame: "_top" } %></td>
+              <td><%= patient.identifier %></td>
+              <td><%= patient.dob %></td>
+              <td>
+                <%= link_to "View", patient, class: "button small", data: { turbo_frame: "_top" } %>
+                <%= link_to "Edit", edit_patient_path(patient), class: "button small secondary", data: { turbo_frame: "_top" } %>
+                <%= button_to "Delete", patient, method: :delete, class: "button small danger", form: { style: "display:inline-block;" }, data: { turbo_confirm: "Are you sure you want to delete this patient and all their records?" } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>No patients found.</p>
+    <% end %>
+  </div>
+<% end %>

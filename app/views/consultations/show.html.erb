@@ -1,0 +1,62 @@
+<div class="patient-header">
+  <div>
+    <h1>Consultation Details</h1>
+    <p>Patient: <%= link_to @patient.name, @patient %></p>
+  </div>
+  <%= link_to "Back to Patient", @patient, class: "button secondary" %>
+</div>
+
+<div class="patient-section">
+  <div class="info-grid">
+    <div class="info-item">
+      <strong>Date & Time</strong>
+      <span><%= @consultation.date_time.strftime("%B %d, %Y at %H:%M") %></span>
+    </div>
+    <div class="info-item">
+      <strong>Location</strong>
+      <span><%= @consultation.location.presence || "Not specified" %></span>
+    </div>
+    <div class="info-item full-width">
+      <strong>Booking Notes</strong>
+      <p><%= @consultation.notes %></p>
+    </div>
+  </div>
+</div>
+
+<div class="patient-section">
+  <div class="section-header">
+    <h3>Consultation Summary</h3>
+    <p class="text-muted">Record what happened during the visit.</p>
+  </div>
+  
+  <%= form_with(model: [@patient, @consultation], local: true) do |form| %>
+    <div class="form-group">
+      <%= form.text_area :summary, class: "form-control", rows: 5, placeholder: "Enter consultation details, diagnosis, prescriptions..." %>
+    </div>
+    <%= form.submit "Save Summary", class: "button primary" %>
+  <% end %>
+</div>
+
+<div class="patient-section">
+  <div class="section-header">
+    <h3>Linked Exams</h3>
+  </div>
+
+  <% if @consultation.exams.any? %>
+    <ul class="exams-list">
+      <% @consultation.exams.each do |exam| %>
+        <li>
+          <div class="exam-info">
+            <strong><%= exam.date %></strong> - <%= exam.title %>
+            <% if exam.file.attached? %>
+              <%= link_to "View File", rails_blob_path(exam.file, disposition: "inline"), target: "_blank" %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No exams linked to this consultation.</p>
+    <p class="text-muted small">Go to the <%= link_to "Exams tab", patient_path(@patient, tab: 'exams') %> to link an exam.</p>
+  <% end %>
+</div>

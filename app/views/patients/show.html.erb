@@ -1,0 +1,66 @@
+<div class="patient-header">
+  <h1><%= @patient.name %></h1>
+  <%= link_to "Back to Dashboard", root_path, class: "button secondary" %>
+</div>
+
+<div class="patient-tabs">
+  <button class="tab-button active" onclick="openTab(event, 'personal-info')">Personal Info</button>
+  <button class="tab-button" onclick="openTab(event, 'exams')">Exams</button>
+  <button class="tab-button" onclick="openTab(event, 'consultations')">Consultations</button>
+  <button class="tab-button" onclick="openTab(event, 'documents')">Documents</button>
+</div>
+
+<div id="personal-info" class="tab-content active">
+  <%= render "personal_info", patient: @patient %>
+</div>
+
+<div id="exams" class="tab-content" style="display:none">
+  <%= render "exams", patient: @patient %>
+</div>
+
+<div id="consultations" class="tab-content" style="display:none">
+  <%= render "consultations", patient: @patient %>
+</div>
+
+<div id="documents" class="tab-content" style="display:none">
+  <%= render "documents", patient: @patient %>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+  var i, tabContent, tabButtons;
+  tabContent = document.getElementsByClassName("tab-content");
+  for (i = 0; i < tabContent.length; i++) {
+    tabContent[i].style.display = "none";
+  }
+  tabButtons = document.getElementsByClassName("tab-button");
+  for (i = 0; i < tabButtons.length; i++) {
+    tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  if (evt) {
+    evt.currentTarget.className += " active";
+  } else {
+    // Find button for this tab and make active
+    for (i = 0; i < tabButtons.length; i++) {
+      if (tabButtons[i].getAttribute('onclick').includes(tabName)) {
+        tabButtons[i].className += " active";
+      }
+    }
+  }
+  
+  // Update URL without reload
+  const url = new URL(window.location);
+  url.searchParams.set('tab', tabName);
+  window.history.pushState({}, '', url);
+}
+
+// Check URL params on load and Turbo navigation
+document.addEventListener('turbo:load', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const tab = urlParams.get('tab');
+  if (tab) {
+    openTab(null, tab);
+  }
+});
+</script>

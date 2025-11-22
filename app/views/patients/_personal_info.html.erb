@@ -1,0 +1,26 @@
+<div class="patient-section">
+  <h3>Personal Information</h3>
+  <div class="info-grid">
+    <div class="info-item">
+      <strong>Name:</strong>
+      <span><%= patient.name %></span>
+    </div>
+    <div class="info-item">
+      <strong>Identifier:</strong>
+      <span><%= patient.identifier %></span>
+    </div>
+    <div class="info-item">
+      <strong>Date of Birth:</strong>
+      <span><%= patient.dob %></span>
+    </div>
+    <div class="info-item">
+      <strong>Contact Info:</strong>
+      <p><%= patient.contact_info %></p>
+    </div>
+    <div class="info-item full-width">
+      <strong>Medical Notes:</strong>
+      <p><%= patient.medical_notes %></p>
+    </div>
+  </div>
+  <%= link_to "Edit Info", edit_patient_path(patient), class: "button small secondary" %>
+</div>
