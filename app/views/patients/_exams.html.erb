@@ -1,6 +1,6 @@
 <div class="patient-section">
   <div class="section-header">
-    <h3>Exams</h3>
+    <h3><%= t('exams') %></h3>
   </div>
   
   <% if patient.exams.any? %>
@@ -10,49 +10,49 @@
           <div class="exam-info">
             <strong><%= exam.date %></strong> - <%= exam.title %>
             <% if exam.file.attached? %>
-              <%= link_to "View File", rails_blob_path(exam.file, disposition: "inline"), target: "_blank" %>
+              <%= link_to t('view_file'), rails_blob_path(exam.file, disposition: "inline"), target: "_blank" %>
             <% end %>
             <p><%= exam.notes %></p>
             
             <div class="exam-linking" style="margin-top: 0.5rem;">
               <% if exam.consultation %>
-                <span class="text-muted small">Linked to: <%= link_to exam.consultation.date_time.strftime("%b %d, %H:%M"), patient_consultation_path(patient, exam.consultation) %></span>
+                <span class="text-muted small"><%= t('linked_to') %> <%= link_to exam.consultation.date_time.strftime("%b %d, %H:%M"), patient_consultation_path(patient, exam.consultation) %></span>
               <% else %>
                 <%= form_with(model: [patient, exam], local: true, class: "inline-form") do |f| %>
-                  <%= f.collection_select :consultation_id, patient.consultations.order(date_time: :desc), :id, ->(c) { "#{c.date_time.strftime('%b %d, %H:%M')} - #{c.location}" }, { prompt: "Link to Consultation" }, { class: "form-control small", style: "width: auto; display: inline-block;" } %>
-                  <%= f.submit "Link", class: "button small secondary" %>
+                  <%= f.collection_select :consultation_id, patient.consultations.order(date_time: :desc), :id, ->(c) { "#{c.date_time.strftime('%b %d, %H:%M')} - #{c.location}" }, { prompt: t('link_to_consultation') }, { class: "form-control small", style: "width: auto; display: inline-block;" } %>
+                  <%= f.submit t('link'), class: "button small secondary" %>
                 <% end %>
               <% end %>
             </div>
           </div>
-          <%= button_to "Delete", patient_exam_path(patient, exam), method: :delete, class: "button small danger", form: { style: "display:inline-block;", data: { turbo_confirm: "Are you sure you want to delete this exam?" } } %>
+          <%= button_to t('delete'), patient_exam_path(patient, exam), method: :delete, class: "button small danger", form: { style: "display:inline-block;", data: { turbo_confirm: t('are_you_sure_exam') } } %>
         </li>
       <% end %>
     </ul>
   <% else %>
-    <p>No exams recorded.</p>
+    <p><%= t('no_exams') %></p>
   <% end %>
 
   <div class="add-form" style="margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
-    <h4>Add New Exam</h4>
+    <h4><%= t('add_new_exam') %></h4>
     <%= form_with(model: [patient, Exam.new], local: true) do |form| %>
       <div class="form-group">
-        <%= form.label :title %>
+        <%= form.label :title, t('title') %>
         <%= form.text_field :title, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= form.label :date %>
+        <%= form.label :date, t('date') %>
         <%= form.date_field :date, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= form.label :notes %>
+        <%= form.label :notes, t('notes') %>
         <%= form.text_area :notes, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= form.label :file %>
+        <%= form.label :file, t('file') %>
         <%= form.file_field :file, class: "form-control" %>
       </div>
-      <%= form.submit "Add Exam", class: "button small primary" %>
+      <%= form.submit t('add_exam'), class: "button small primary" %>
     <% end %>
   </div>
 </div>

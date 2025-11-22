@@ -1,37 +1,37 @@
 <div class="patient-section">
-  <h3>Personal Information</h3>
+  <h3><%= t('personal_info') %></h3>
   <div class="info-grid">
     <div class="info-item">
-      <strong>Name:</strong>
+      <strong><%= t('name') %></strong>
       <span><%= patient.name %></span>
     </div>
     <div class="info-item">
-      <strong>Identifier:</strong>
+      <strong><%= t('identifier') %></strong>
       <span><%= patient.identifier %></span>
     </div>
     <div class="info-item">
-      <strong>Date of Birth:</strong>
+      <strong><%= t('date_of_birth') %></strong>
       <span><%= patient.dob %></span>
     </div>
     <div class="info-item">
-    <strong>Contact Info</strong>
+    <strong><%= t('contact_info') %></strong>
     <p><%= patient.contact_info %></p>
   </div>
   
   <div class="info-item full-width" style="background: #fff3cd; padding: 1rem; border-radius: 8px; border-left: 4px solid #ffc107;">
-    <strong style="color: #856404;">⚠️ Allergies</strong>
-    <p style="color: #856404;"><%= patient.allergies.presence || "None recorded" %></p>
+    <strong style="color: #856404;">⚠️ <%= t('allergies') %></strong>
+    <p style="color: #856404;"><%= patient.allergies.presence || t('none_recorded') %></p>
   </div>
   
   <div class="info-item full-width" style="background: #d1ecf1; padding: 1rem; border-radius: 8px; border-left: 4px solid #17a2b8;">
-    <strong style="color: #0c5460;">💊 Current Medications</strong>
-    <p style="color: #0c5460;"><%= patient.current_medications.presence || "None recorded" %></p>
+    <strong style="color: #0c5460;">💊 <%= t('current_medications') %></strong>
+    <p style="color: #0c5460;"><%= patient.current_medications.presence || t('none_recorded') %></p>
   </div>
 
   <div class="info-item full-width">
-    <strong>Medical Notes</strong>
+    <strong><%= t('medical_notes') %></strong>
     <p><%= patient.medical_notes %></p>
   </div>
   </div>
-  <%= link_to "Edit Info", edit_patient_path(patient), class: "button small secondary" %>
+  <%= link_to t('edit_info'), edit_patient_path(patient), class: "button small secondary" %>
 </div>

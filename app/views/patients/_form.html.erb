@@ -12,42 +12,42 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :name %>
+    <%= form.label :name, t('name') %>
     <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= form.label :identifier, "Identifier (ID/SSN)" %>
+    <%= form.label :identifier, t('identifier') %>
     <%= form.text_field :identifier, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= form.label :dob, "Date of Birth" %>
+    <%= form.label :dob, t('date_of_birth') %>
     <%= form.date_field :dob, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= form.label :contact_info %>
+    <%= form.label :contact_info, t('contact_info') %>
     <%= form.text_area :contact_info, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= form.label :reason_for_visit, "Reason for Visit (Registration)" %>
-    <%= form.text_area :reason_for_visit, class: "form-control", placeholder: "Short description of why the patient is seeking help..." %>
+    <%= form.label :reason_for_visit, t('reason_for_visit') %>
+    <%= form.text_area :reason_for_visit, class: "form-control", placeholder: t('placeholder.reason_visit') %>
   </div>
 
   <div class="form-group">
-    <%= form.label :allergies %>
-    <%= form.text_area :allergies, class: "form-control", placeholder: "List any known allergies..." %>
+    <%= form.label :allergies, t('allergies') %>
+    <%= form.text_area :allergies, class: "form-control", placeholder: t('placeholder.allergies') %>
   </div>
 
   <div class="form-group">
-    <%= form.label :current_medications, "Current Medications" %>
-    <%= form.text_area :current_medications, class: "form-control", placeholder: "List current medications and dosages..." %>
+    <%= form.label :current_medications, t('current_medications') %>
+    <%= form.text_area :current_medications, class: "form-control", placeholder: t('placeholder.medications') %>
   </div>
 
   <div class="form-group">
-    <%= form.label :medical_notes %>
+    <%= form.label :medical_notes, t('medical_notes') %>
     <%= form.text_area :medical_notes, class: "form-control" %>
   </div>
 

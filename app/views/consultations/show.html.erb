@@ -1,23 +1,23 @@
 <div class="patient-header">
   <div>
-    <h1>Consultation Details</h1>
-    <p>Patient: <%= link_to @patient.name, @patient %></p>
+    <h1><%= t('consultation_details') %></h1>
+    <p><%= t('patient') %>: <%= link_to @patient.name, @patient %></p>
   </div>
-  <%= link_to "Back to Patient", @patient, class: "button secondary" %>
+  <%= link_to t('back_to_patient'), @patient, class: "button secondary" %>
 </div>
 
 <div class="patient-section">
   <div class="info-grid">
     <div class="info-item">
-      <strong>Date & Time</strong>
+      <strong><%= t('date_time') %></strong>
       <span><%= @consultation.date_time.strftime("%B %d, %Y at %H:%M") %></span>
     </div>
     <div class="info-item">
-      <strong>Location</strong>
-      <span><%= @consultation.location.presence || "Not specified" %></span>
+      <strong><%= t('location') %></strong>
+      <span><%= @consultation.location.presence || t('not_specified') %></span>
     </div>
     <div class="info-item full-width">
-      <strong>Booking Notes</strong>
+      <strong><%= t('booking_notes') %></strong>
       <p><%= @consultation.notes %></p>
     </div>
   </div>
@@ -25,21 +25,21 @@
 
 <div class="patient-section">
   <div class="section-header">
-    <h3>Consultation Summary</h3>
-    <p class="text-muted">Record what happened during the visit.</p>
+    <h3><%= t('consultation_summary') %></h3>
+    <p class="text-muted"><%= t('record_visit') %></p>
   </div>
   
   <%= form_with(model: [@patient, @consultation], local: true) do |form| %>
     <div class="form-group">
-      <%= form.text_area :summary, class: "form-control", rows: 5, placeholder: "Enter consultation details, diagnosis, prescriptions..." %>
+      <%= form.text_area :summary, class: "form-control", rows: 5, placeholder: t('placeholder.consultation_summary') %>
     </div>
-    <%= form.submit "Save Summary", class: "button primary" %>
+    <%= form.submit t('save_summary'), class: "button primary" %>
   <% end %>
 </div>
 
 <div class="patient-section">
   <div class="section-header">
-    <h3>Linked Exams</h3>
+    <h3><%= t('linked_exams') %></h3>
   </div>
 
   <% if @consultation.exams.any? %>
@@ -49,14 +49,14 @@
           <div class="exam-info">
             <strong><%= exam.date %></strong> - <%= exam.title %>
             <% if exam.file.attached? %>
-              <%= link_to "View File", rails_blob_path(exam.file, disposition: "inline"), target: "_blank" %>
+              <%= link_to t('view_file'), rails_blob_path(exam.file, disposition: "inline"), target: "_blank" %>
             <% end %>
           </div>
         </li>
       <% end %>
     </ul>
   <% else %>
-    <p>No exams linked to this consultation.</p>
-    <p class="text-muted small">Go to the <%= link_to "Exams tab", patient_path(@patient, tab: 'exams') %> to link an exam.</p>
+    <p><%= t('no_linked_exams') %></p>
+    <p class="text-muted small"><%= t('go_to_exams') %> <%= link_to t('exams'), patient_path(@patient, tab: 'exams') %> <%= t('to_link_exam') %></p>
   <% end %>
 </div>

@@ -1,24 +1,24 @@
 <div class="patient-section">
   <div class="section-header">
-    <h3>Appointments & Consultations</h3>
+    <h3><%= t('appointments_consultations') %></h3>
   </div>
 
   <% upcoming = patient.consultations.where("date_time > ?", Time.current).order(date_time: :asc) %>
   <% past = patient.consultations.where("date_time <= ?", Time.current).order(date_time: :desc) %>
 
   <% if upcoming.any? %>
-    <h4>Upcoming Appointments</h4>
+    <h4><%= t('upcoming_appointments') %></h4>
     <ul class="consultations-list">
       <% upcoming.each do |consultation| %>
         <li>
           <div class="consultation-info">
             <strong><%= consultation.date_time.strftime("%B %d, %Y %H:%M") %></strong>
-            <span>📍 <%= consultation.location.presence || "No location" %></span>
+            <span>📍 <%= consultation.location.presence || t('not_specified') %></span>
             <p><em><%= consultation.notes %></em></p>
           </div>
           <div class="actions">
-            <%= link_to "Open", patient_consultation_path(patient, consultation), class: "button small secondary" %>
-            <%= button_to "Cancel", patient_consultation_path(patient, consultation), method: :delete, class: "button small danger", form: { style: "display:inline-block;", data: { turbo_confirm: "Are you sure you want to cancel this appointment?" } } %>
+            <%= link_to t('open'), patient_consultation_path(patient, consultation), class: "button small secondary" %>
+            <%= button_to t('cancel'), patient_consultation_path(patient, consultation), method: :delete, class: "button small danger", form: { style: "display:inline-block;", data: { turbo_confirm: t('are_you_sure_appointment') } } %>
           </div>
         </li>
       <% end %>
@@ -26,40 +26,40 @@
   <% end %>
 
   <% if past.any? %>
-    <h4 style="margin-top: 2rem;">Past Consultations</h4>
+    <h4 style="margin-top: 2rem;"><%= t('past_consultations') %></h4>
     <ul class="consultations-list">
       <% past.each do |consultation| %>
         <li>
           <div class="consultation-info">
             <strong><%= consultation.date_time.strftime("%B %d, %Y %H:%M") %></strong>
-            <p><%= consultation.summary.presence || "No summary recorded." %></p>
+            <p><%= consultation.summary.presence || t('no_summary') %></p>
           </div>
           <div class="actions">
-            <%= link_to "View Details", patient_consultation_path(patient, consultation), class: "button small secondary" %>
+            <%= link_to t('view_details'), patient_consultation_path(patient, consultation), class: "button small secondary" %>
           </div>
         </li>
       <% end %>
     </ul>
   <% elsif upcoming.empty? %>
-    <p>No appointments or consultations recorded.</p>
+    <p><%= t('no_appointments') %></p>
   <% end %>
 
   <div class="add-form" style="margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
-    <h4>Book New Appointment</h4>
+    <h4><%= t('book_new_appointment') %></h4>
     <%= form_with(model: [patient, Consultation.new], local: true) do |form| %>
       <div class="form-group">
-        <%= form.label :date_time, "Date & Time" %>
+        <%= form.label :date_time, t('date_time') %>
         <%= form.datetime_field :date_time, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= form.label :location %>
-        <%= form.text_field :location, class: "form-control", placeholder: "e.g. Room 302, Main Clinic" %>
+        <%= form.label :location, t('location') %>
+        <%= form.text_field :location, class: "form-control", placeholder: t('placeholder.appointment_location') %>
       </div>
       <div class="form-group">
-        <%= form.label :notes, "Booking Notes" %>
-        <%= form.text_area :notes, class: "form-control", placeholder: "Reason for appointment..." %>
+        <%= form.label :notes, t('booking_notes') %>
+        <%= form.text_area :notes, class: "form-control", placeholder: t('placeholder.appointment_reason') %>
       </div>
-      <%= form.submit "Book Appointment", class: "button small primary" %>
+      <%= form.submit t('book_appointment'), class: "button small primary" %>
     <% end %>
   </div>
 </div>

@@ -29,39 +29,39 @@
       </div>
     </div>
 
-    <h3>Next Appointments</h3>
+    <h3><%= t('next_appointments') %></h3>
     <% if @upcoming_appointments.any? %>
       <ul class="consultations-list">
         <% @upcoming_appointments.limit(5).each do |appt| %>
           <li>
             <div class="consultation-info">
               <strong><%= appt.date_time.strftime("%b %d, %H:%M") %></strong>
-              <span class="text-muted small">Patient: <%= link_to appt.patient.name, appt.patient %></span>
+              <span class="text-muted small"><%= t('patient') %>: <%= link_to appt.patient.name, appt.patient %></span>
               <p><%= appt.location %></p>
             </div>
-            <%= link_to "Open", patient_consultation_path(appt.patient, appt), class: "button small secondary" %>
+            <%= link_to t('open'), patient_consultation_path(appt.patient, appt), class: "button small secondary" %>
           </li>
         <% end %>
       </ul>
       <% if @upcoming_appointments.count > 5 %>
-        <p class="text-muted text-center" style="margin-top: 1rem;">And <%= @upcoming_appointments.count - 5 %> more...</p>
+        <p class="text-muted text-center" style="margin-top: 1rem;"><%= t('and_more', count: @upcoming_appointments.count - 5) %></p>
       <% end %>
     <% else %>
-      <p class="text-muted">No upcoming appointments.</p>
+      <p class="text-muted"><%= t('no_upcoming') %></p>
     <% end %>
   </div>
 
   <!-- Right Column: Patient List -->
   <div class="dashboard-column">
     <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-      <h3>Patients</h3>
-      <%= link_to "New Patient", new_patient_path, class: "button primary" %>
+      <h3><%= t('patients') %></h3>
+      <%= link_to t('new_patient'), new_patient_path, class: "button primary" %>
     </div>
 
     <div class="search-bar" style="margin-bottom: 1rem;">
       <%= form_with url: root_path, method: :get, local: true, style: "display: flex; width: 100%; gap: 0.5rem;" do |form| %>
-        <%= form.text_field :query, placeholder: "Search patients...", value: params[:query], class: "search-input form-control" %>
-        <%= form.submit "Search", class: "button secondary" %>
+        <%= form.text_field :query, placeholder: t('search_patients'), value: params[:query], class: "search-input form-control" %>
+        <%= form.submit t('search'), class: "button secondary" %>
       <% end %>
     </div>
 
@@ -69,10 +69,10 @@
       <table>
         <thead>
           <tr>
-            <th><%= link_to "Name", root_path(sort: "name", query: params[:query]) %></th>
-            <th>Identifier</th>
-            <th><%= link_to "Registered", root_path(sort: "created_at", query: params[:query]) %></th>
-            <th>Actions</th>
+            <th><%= link_to t('name'), root_path(sort: "name", query: params[:query]) %></th>
+            <th><%= t('identifier') %></th>
+            <th><%= link_to t('registered'), root_path(sort: "created_at", query: params[:query]) %></th>
+            <th><%= t('actions') %></th>
           </tr>
         </thead>
         <tbody>
@@ -82,7 +82,7 @@
               <td><%= patient.identifier %></td>
               <td><%= patient.created_at.strftime("%b %d, %Y") %></td>
               <td>
-                <%= link_to "View", patient, class: "button small secondary" %>
+                <%= link_to t('view'), patient, class: "button small secondary" %>
               </td>
             </tr>
           <% end %>

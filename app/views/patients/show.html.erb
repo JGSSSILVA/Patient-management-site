@@ -1,19 +1,19 @@
 <div class="patient-header">
   <div>
     <h1><%= @patient.name %></h1>
-    <%= link_to "Prescribe - PEM", "https://pem.min-saude.pt/web/guest/home?p_p_state=maximized&p_p_mode=view&saveLastPath=false&_58_struts_action=%2Flogin%2Flogin&p_p_id=58&p_p_lifecycle=0&_58_redirect=%2Fpem", 
+    <%= link_to t('prescribe_pem'), "https://pem.min-saude.pt/web/guest/home?p_p_state=maximized&p_p_mode=view&saveLastPath=false&_58_struts_action=%2Flogin%2Flogin&p_p_id=58&p_p_lifecycle=0&_58_redirect=%2Fpem", 
         class: "button primary", 
         target: "_blank", 
         style: "margin-left: 1rem; font-size: 0.9rem;" %>
   </div>
-  <%= link_to "Back to Dashboard", root_path, class: "button secondary" %>
+  <%= link_to t('back_to_dashboard'), root_path, class: "button secondary" %>
 </div>
 
 <div class="patient-tabs">
-  <button class="tab-button active" onclick="openTab(event, 'personal-info')">Personal Info</button>
-  <button class="tab-button" onclick="openTab(event, 'exams')">Exams</button>
-  <button class="tab-button" onclick="openTab(event, 'consultations')">Consultations</button>
-  <button class="tab-button" onclick="openTab(event, 'documents')">Documents</button>
+  <button class="tab-button active" onclick="openTab(event, 'personal-info')"><%= t('personal_info') %></button>
+  <button class="tab-button" onclick="openTab(event, 'exams')"><%= t('exams') %></button>
+  <button class="tab-button" onclick="openTab(event, 'consultations')"><%= t('appointments_consultations') %></button>
+  <button class="tab-button" onclick="openTab(event, 'documents')"><%= t('documents') %></button>
 </div>
 
 <div id="personal-info" class="tab-content active">
