@@ -4,6 +4,24 @@ class Consultation < ApplicationRecord
   
   validate :no_overlapping_appointments, if: :date_time?
   
+  def google_calendar_url
+    return nil unless date_time.present?
+    
+    # Format: YYYYMMDDTHHMMSS
+    start_time = date_time.strftime("%Y%m%dT%H%M%S")
+    end_time = (date_time + 1.hour).strftime("%Y%m%dT%H%M%S")
+    
+    params = {
+      action: 'TEMPLATE',
+      text: "Consultation: #{patient.name}",
+      dates: "#{start_time}/#{end_time}",
+      details: "Patient: #{patient.name}\nLocation: #{location}\nNotes: #{notes}",
+      location: location || ""
+    }
+    
+    "https://calendar.google.com/calendar/render?" + params.to_query
+  end
+  
   private
   
   def no_overlapping_appointments

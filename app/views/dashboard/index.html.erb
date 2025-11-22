@@ -39,7 +39,10 @@
               <span class="text-muted small"><%= t('patient') %>: <%= link_to appt.patient.name, appt.patient %></span>
               <p><%= appt.location %></p>
             </div>
-            <%= link_to t('open'), patient_consultation_path(appt.patient, appt), class: "button small secondary" %>
+            <div style="display: flex; gap: 0.5rem;">
+              <%= link_to t('open'), patient_consultation_path(appt.patient, appt), class: "button small secondary" %>
+              <%= link_to "📅", appt.google_calendar_url, class: "button small", target: "_blank", title: t('add_to_google_calendar'), style: "padding: 0.4rem 0.8rem;" if appt.google_calendar_url %>
+            </div>
           </li>
         <% end %>
       </ul>
