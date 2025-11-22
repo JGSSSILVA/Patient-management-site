@@ -1,7 +1,13 @@
 <div class="patient-header">
-  <div>
-    <h1><%= t('consultation_details') %></h1>
-    <p><%= t('patient') %>: <%= link_to @patient.name, @patient %></p>
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <div>
+      <h1 style="margin: 0;"><%= t('consultation_details') %></h1>
+      <p><%= t('patient') %>: <%= link_to @patient.name, @patient %></p>
+    </div>
+    <%= link_to t('prescribe_pem'), "https://pem.min-saude.pt/web/guest/home?p_p_state=maximized&p_p_mode=view&saveLastPath=false&_58_struts_action=%2Flogin%2Flogin&p_p_id=58&p_p_lifecycle=0&_58_redirect=%2Fpem", 
+        class: "button primary", 
+        target: "_blank", 
+        style: "font-size: 0.9rem;" %>
   </div>
   <%= link_to t('back_to_patient'), @patient, class: "button secondary" %>
 </div>

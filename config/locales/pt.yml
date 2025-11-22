@@ -3,6 +3,7 @@ pt:
   patients: "Pacientes"
   logout: "Sair"
   language: "Idioma"
+  patient: "Paciente"
   
   # Navigation
   back_to_dashboard: "Voltar ao Painel"
