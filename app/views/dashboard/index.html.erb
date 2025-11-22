@@ -33,33 +33,30 @@
           </div>
         <% end %>
         
-        <!-- Time Grid (7 AM to 9 PM) -->
-        <% (7..20).each do |hour| %>
-          <% [0, 30].each do |minute| %>
-            <!-- Time Label -->
-            <div style="background: #f7fafc; padding: 0.5rem; text-align: right; font-size: 0.7rem; color: var(--text-muted); border-right: 1px solid var(--border-color); border-bottom: 1px solid <%= minute == 0 ? '#cbd5e0' : '#e2e8f0' %>;">
-              <%= sprintf("%02d:%02d", hour, minute) %>
-            </div>
-            
-            <!-- Day Columns -->
-            <% (@current_week_start..@current_week_end).each do |date| %>
-              <div style="position: relative; min-height: 30px; border-right: 1px solid var(--border-color); border-bottom: 1px solid <%= minute == 0 ? '#cbd5e0' : '#e2e8f0' %>; background: <%= date == Date.current ? '#fafcff' : 'white' %>;">
-                <% day_appointments = @appointments_by_date[date] || [] %>
-                <% day_appointments.each do |appt| %>
-                  <% appt_hour = appt.date_time.hour %>
-                  <% appt_minute = appt.date_time.min %>
-                  <% if appt_hour == hour && (minute == 0 ? appt_minute < 30 : appt_minute >= 30) %>
-                    <div style="position: absolute; top: 2px; left: 2px; right: 2px; background: var(--primary-color); color: white; padding: 0.3rem; border-radius: 4px; font-size: 0.65rem; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                      <%= link_to patient_consultation_path(appt.patient, appt), style: "color: white; text-decoration: none; display: block;" do %>
-                        <div style="font-weight: bold; margin-bottom: 0.15rem;"><%= appt.date_time.strftime("%H:%M") %></div>
-                        <div style="font-size: 0.6rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><%= appt.patient.name %></div>
-                      <% end %>
-                      <%= link_to "📅", appt.google_calendar_url, target: "_blank", title: t('add_to_google_calendar'), style: "position: absolute; top: 2px; right: 2px; font-size: 0.7rem; opacity: 0.9; text-decoration: none;" if appt.google_calendar_url %>
-                    </div>
-                  <% end %>
+        <!-- Time Grid (8 AM to 8 PM, 1-hour blocks) -->
+        <% (8..20).each do |hour| %>
+          <!-- Time Label -->
+          <div style="background: #f7fafc; padding: 0.75rem 0.5rem; text-align: right; font-size: 0.75rem; color: var(--text-muted); font-weight: 500; border-right: 1px solid var(--border-color); border-bottom: 1px solid #cbd5e0;">
+            <%= sprintf("%02d:00", hour) %>
+          </div>
+          
+          <!-- Day Columns -->
+          <% (@current_week_start..@current_week_end).each do |date| %>
+            <div style="position: relative; min-height: 50px; border-right: 1px solid var(--border-color); border-bottom: 1px solid #cbd5e0; background: <%= date == Date.current ? '#fafcff' : 'white' %>;">
+              <% day_appointments = @appointments_by_date[date] || [] %>
+              <% day_appointments.each do |appt| %>
+                <% appt_hour = appt.date_time.hour %>
+                <% if appt_hour == hour %>
+                  <div style="position: absolute; top: 3px; left: 3px; right: 3px; background: var(--primary-color); color: white; padding: 0.4rem; border-radius: 4px; font-size: 0.7rem; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <%= link_to patient_consultation_path(appt.patient, appt), style: "color: white; text-decoration: none; display: block;" do %>
+                      <div style="font-weight: bold; margin-bottom: 0.2rem;"><%= appt.date_time.strftime("%H:%M") %></div>
+                      <div style="font-size: 0.65rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><%= appt.patient.name %></div>
+                    <% end %>
+                    <%= link_to "📅", appt.google_calendar_url, target: "_blank", title: t('add_to_google_calendar'), style: "position: absolute; top: 3px; right: 3px; font-size: 0.75rem; opacity: 0.9; text-decoration: none;" if appt.google_calendar_url %>
+                  </div>
                 <% end %>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
           <% end %>
         <% end %>
       </div>
