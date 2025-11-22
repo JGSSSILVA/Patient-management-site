@@ -1,0 +1,113 @@
+pt:
+  dashboard: "Painel"
+  patients: "Pacientes"
+  logout: "Sair"
+  language: "Idioma"
+  
+  # Navigation
+  back_to_dashboard: "Voltar ao Painel"
+  new_patient: "Novo Paciente"
+  view_all_patients: "Ver Todos os Pacientes"
+  
+  # Patient Info
+  personal_info: "Informação Pessoal"
+  name: "Nome"
+  identifier: "Identificador (ID/SNS)"
+  date_of_birth: "Data de Nascimento"
+  contact_info: "Informação de Contacto"
+  reason_for_visit: "Motivo da Visita (Registo)"
+  allergies: "Alergias"
+  current_medications: "Medicação Atual"
+  medical_notes: "Notas Médicas"
+  edit_info: "Editar Informação"
+  
+  # Appointments & Consultations
+  appointments_consultations: "Consultas e Marcações"
+  book_new_appointment: "Marcar Nova Consulta"
+  date_time: "Data e Hora"
+  location: "Localização"
+  booking_notes: "Notas da Marcação"
+  book_appointment: "Marcar Consulta"
+  upcoming_appointments: "Próximas Consultas"
+  past_consultations: "Consultas Anteriores"
+  no_appointments: "Sem consultas ou marcações registadas."
+  open: "Abrir"
+  cancel: "Cancelar"
+  view_details: "Ver Detalhes"
+  no_summary: "Sem resumo registado."
+  
+  # Exams
+  exams: "Exames"
+  add_new_exam: "Adicionar Novo Exame"
+  title: "Título"
+  date: "Data"
+  notes: "Notas"
+  file: "Ficheiro"
+  add_exam: "Adicionar Exame"
+  view_file: "Ver Ficheiro"
+  linked_to: "Ligado a:"
+  link_to_consultation: "Ligar à Consulta"
+  link: "Ligar"
+  no_exams: "Sem exames registados."
+  
+  # Documents
+  documents: "Documentos"
+  upload_document: "Carregar Documento"
+  document_name: "Nome do Documento"
+  upload: "Carregar"
+  download: "Descarregar"
+  no_documents: "Sem documentos carregados."
+  
+  # Actions
+  delete: "Eliminar"
+  edit: "Editar"
+  view: "Ver"
+  save: "Guardar"
+  create: "Criar"
+  update: "Atualizar"
+  search: "Pesquisar"
+  
+  # Calendar
+  upcoming_appointments_count: "Próximas Consultas"
+  next_appointments: "Próximas Marcações"
+  and_more: "E %{count} mais..."
+  no_upcoming: "Sem consultas agendadas."
+  
+  # Patient List
+  search_patients: "Pesquisar pacientes..."
+  registered: "Registado"
+  actions: "Ações"
+  
+  # Consultation Details
+  consultation_details: "Detalhes da Consulta"
+  patient: "Paciente"
+  back_to_patient: "Voltar ao Paciente"
+  not_specified: "Não especificado"
+  consultation_summary: "Resumo da Consulta"
+  record_visit: "Registar o que aconteceu durante a visita."
+  save_summary: "Guardar Resumo"
+  linked_exams: "Exames Ligados"
+  no_linked_exams: "Sem exames ligados a esta consulta."
+  go_to_exams: "Ir para o separador de Exames"
+  to_link_exam: "para ligar um exame."
+  
+  # Prescription
+  prescribe_pem: "Prescrever - PEM"
+  
+  # Alerts
+  none_recorded: "Nenhum registado"
+  
+  # Confirmations
+  are_you_sure_exam: "Tem a certeza que deseja eliminar este exame?"
+  are_you_sure_appointment: "Tem a certeza que deseja cancelar esta consulta?"
+  are_you_sure_document: "Tem a certeza que deseja eliminar este documento?"
+  are_you_sure_patient: "Tem a certeza que deseja eliminar este paciente e todos os seus registos?"
+  
+  # Placeholders
+  placeholder:
+    reason_visit: "Breve descrição do motivo da procura de ajuda..."
+    allergies: "Liste quaisquer alergias conhecidas..."
+    medications: "Liste medicação atual e dosagens..."
+    appointment_location: "ex. Sala 302, Clínica Principal"
+    appointment_reason: "Motivo da consulta..."
+    consultation_summary: "Introduza detalhes da consulta, diagnóstico, prescrições..."

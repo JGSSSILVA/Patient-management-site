@@ -37,6 +37,16 @@
   </div>
 
   <div class="form-group">
+    <%= form.label :allergies %>
+    <%= form.text_area :allergies, class: "form-control", placeholder: "List any known allergies..." %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :current_medications, "Current Medications" %>
+    <%= form.text_area :current_medications, class: "form-control", placeholder: "List current medications and dosages..." %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :medical_notes %>
     <%= form.text_area :medical_notes, class: "form-control" %>
   </div>

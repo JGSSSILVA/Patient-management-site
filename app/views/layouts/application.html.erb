@@ -31,8 +31,12 @@
     <header>
       <% if user_signed_in? %>
         <nav>
-          <%= link_to "Dashboard", root_path %>
-          <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "button small secondary" %>
+          <%= link_to t('dashboard'), root_path %>
+          <div style="display: inline-flex; gap: 0.5rem; align-items: center;">
+            <%= link_to "EN", url_for(locale: :en), class: "button small #{I18n.locale == :en ? 'primary' : 'secondary'}", style: "padding: 0.3rem 0.6rem;" %>
+            <%= link_to "PT", url_for(locale: :pt), class: "button small #{I18n.locale == :pt ? 'primary' : 'secondary'}", style: "padding: 0.3rem 0.6rem;" %>
+            <%= button_to t('logout'), destroy_user_session_path, method: :delete, class: "button small secondary" %>
+          </div>
         </nav>
       <% end %>
     </header>

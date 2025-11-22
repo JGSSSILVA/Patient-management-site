@@ -14,13 +14,24 @@
       <span><%= patient.dob %></span>
     </div>
     <div class="info-item">
-      <strong>Contact Info:</strong>
-      <p><%= patient.contact_info %></p>
-    </div>
-    <div class="info-item full-width">
-      <strong>Medical Notes:</strong>
-      <p><%= patient.medical_notes %></p>
-    </div>
+    <strong>Contact Info</strong>
+    <p><%= patient.contact_info %></p>
+  </div>
+  
+  <div class="info-item full-width" style="background: #fff3cd; padding: 1rem; border-radius: 8px; border-left: 4px solid #ffc107;">
+    <strong style="color: #856404;">⚠️ Allergies</strong>
+    <p style="color: #856404;"><%= patient.allergies.presence || "None recorded" %></p>
+  </div>
+  
+  <div class="info-item full-width" style="background: #d1ecf1; padding: 1rem; border-radius: 8px; border-left: 4px solid #17a2b8;">
+    <strong style="color: #0c5460;">💊 Current Medications</strong>
+    <p style="color: #0c5460;"><%= patient.current_medications.presence || "None recorded" %></p>
+  </div>
+
+  <div class="info-item full-width">
+    <strong>Medical Notes</strong>
+    <p><%= patient.medical_notes %></p>
+  </div>
   </div>
   <%= link_to "Edit Info", edit_patient_path(patient), class: "button small secondary" %>
 </div>

@@ -1,5 +1,11 @@
 <div class="patient-header">
-  <h1><%= @patient.name %></h1>
+  <div>
+    <h1><%= @patient.name %></h1>
+    <%= link_to "Prescribe - PEM", "https://pem.min-saude.pt/web/guest/home?p_p_state=maximized&p_p_mode=view&saveLastPath=false&_58_struts_action=%2Flogin%2Flogin&p_p_id=58&p_p_lifecycle=0&_58_redirect=%2Fpem", 
+        class: "button primary", 
+        target: "_blank", 
+        style: "margin-left: 1rem; font-size: 0.9rem;" %>
+  </div>
   <%= link_to "Back to Dashboard", root_path, class: "button secondary" %>
 </div>
 

@@ -5,9 +5,9 @@ class ConsultationsController < ApplicationController
   def create
     @consultation = @patient.consultations.build(consultation_params)
     if @consultation.save
-      redirect_to @patient, notice: "Consultation added."
+      redirect_to @patient, notice: "Appointment booked successfully."
     else
-      redirect_to @patient, alert: "Could not add consultation."
+      redirect_to @patient, alert: "Could not book appointment: #{@consultation.errors.full_messages.join(', ')}"
     end
   end
 
