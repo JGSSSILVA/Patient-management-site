@@ -1,31 +1,113 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  dashboard: "Dashboard"
+  patients: "Patients"
+  logout: "Logout"
+  language: "Language"
+  patient: "Patient"
+  
+  # Navigation
+  back_to_dashboard: "Back to Dashboard"
+  new_patient: "New Patient"
+  view_all_patients: "View All Patients"
+  
+  # Patient Info
+  personal_info: "Personal Information"
+  name: "Name"
+  identifier: "Identifier (ID/SSN)"
+  date_of_birth: "Date of Birth"
+  contact_info: "Contact Info"
+  reason_for_visit: "Reason for Visit (Registration)"
+  allergies: "Allergies"
+  current_medications: "Current Medications"
+  medical_notes: "Medical Notes"
+  edit_info: "Edit Info"
+  
+  # Appointments & Consultations
+  appointments_consultations: "Appointments & Consultations"
+  book_new_appointment: "Book New Appointment"
+  date_time: "Date & Time"
+  location: "Location"
+  booking_notes: "Booking Notes"
+  book_appointment: "Book Appointment"
+  upcoming_appointments: "Upcoming Appointments"
+  past_consultations: "Past Consultations"
+  no_appointments: "No appointments or consultations recorded."
+  open: "Open"
+  cancel: "Cancel"
+  view_details: "View Details"
+  no_summary: "No summary recorded."
+  
+  # Exams
+  exams: "Exams"
+  add_new_exam: "Add New Exam"
+  title: "Title"
+  date: "Date"
+  notes: "Notes"
+  file: "File"
+  add_exam: "Add Exam"
+  view_file: "View File"
+  linked_to: "Linked to:"
+  link_to_consultation: "Link to Consultation"
+  link: "Link"
+  no_exams: "No exams recorded."
+  
+  # Documents
+  documents: "Documents"
+  upload_document: "Upload Document"
+  document_name: "Document Name"
+  upload: "Upload"
+  download: "Download"
+  no_documents: "No documents uploaded."
+  
+  # Actions
+  delete: "Delete"
+  edit: "Edit"
+  view: "View"
+  save: "Save"
+  create: "Create"
+  update: "Update"
+  search: "Search"
+  
+  # Calendar
+  upcoming_appointments_count: "Upcoming Appointments"
+  next_appointments: "Next Appointments"
+  and_more: "And %{count} more..."
+  no_upcoming: "No upcoming appointments."
+  
+  # Patient List
+  search_patients: "Search patients..."
+  registered: "Registered"
+  actions: "Actions"
+  
+  # Consultation Details
+  consultation_details: "Consultation Details"
+  back_to_patient: "Back to Patient"
+  not_specified: "Not specified"
+  consultation_summary: "Consultation Summary"
+  record_visit: "Record what happened during the visit."
+  save_summary: "Save Summary"
+  linked_exams: "Linked Exams"
+  no_linked_exams: "No exams linked to this consultation."
+  go_to_exams: "Go to the Exams tab"
+  to_link_exam: "to link an exam."
+  
+  # Prescription
+  prescribe_pem: "Prescribe - PEM"
+  
+  # Alerts
+  none_recorded: "None recorded"
+  
+  # Confirmations
+  are_you_sure_exam: "Are you sure you want to delete this exam?"
+  are_you_sure_appointment: "Are you sure you want to cancel this appointment?"
+  are_you_sure_document: "Are you sure you want to delete this document?"
+  are_you_sure_patient: "Are you sure you want to delete this patient and all their records?"
+  
+  # Placeholders
+  placeholder:
+    reason_visit: "Short description of why the patient is seeking help..."
+    allergies: "List any known allergies..."
+    medications: "List current medications and dosages..."
+    appointment_location: "e.g. Room 302, Main Clinic"
+    appointment_reason: "Reason for appointment..."
+    consultation_summary: "Enter consultation details, diagnosis, prescriptions..."
