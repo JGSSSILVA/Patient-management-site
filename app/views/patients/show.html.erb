@@ -1,10 +1,10 @@
 <div class="patient-header">
-  <div>
-    <h1><%= @patient.name %></h1>
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <h1 style="margin: 0;"><%= @patient.name %></h1>
     <%= link_to t('prescribe_pem'), "https://pem.min-saude.pt/web/guest/home?p_p_state=maximized&p_p_mode=view&saveLastPath=false&_58_struts_action=%2Flogin%2Flogin&p_p_id=58&p_p_lifecycle=0&_58_redirect=%2Fpem", 
         class: "button primary", 
         target: "_blank", 
-        style: "margin-left: 1rem; font-size: 0.9rem;" %>
+        style: "font-size: 0.9rem;" %>
   </div>
   <%= link_to t('back_to_dashboard'), root_path, class: "button secondary" %>
 </div>
