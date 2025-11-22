@@ -4,9 +4,9 @@
   <div class="dashboard-column">
     <div class="stat-card">
       <!-- Week Navigation -->
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem;">
         <%= link_to "← #{t('previous_week', default: 'Previous Week')}", root_path(week_offset: @week_offset - 1), class: "button small secondary" %>
-        <h2 style="margin: 0;">
+        <h2 style="margin: 0; flex: 1; text-align: center;">
           <%= @current_week_start.strftime("%b %d") %> - <%= @current_week_end.strftime("%b %d, %Y") %>
         </h2>
         <%= link_to "#{t('next_week', default: 'Next Week')} →", root_path(week_offset: @week_offset + 1), class: "button small secondary" %>
