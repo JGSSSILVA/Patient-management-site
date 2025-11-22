@@ -1,46 +1,6 @@
 <div class="dashboard-container">
   
-  <!-- Top Section: Patient List -->
-  <div class="dashboard-section" style="margin-bottom: 2rem;">
-    <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-      <h3><%= t('patients') %></h3>
-      <%= link_to t('new_patient'), new_patient_path, class: "button primary" %>
-    </div>
-
-    <div class="search-bar" style="margin-bottom: 1rem;">
-      <%= form_with url: root_path, method: :get, local: true, style: "display: flex; width: 100%; gap: 0.5rem;" do |form| %>
-        <%= form.text_field :query, placeholder: t('search_patients'), value: params[:query], class: "search-input form-control" %>
-        <%= form.submit t('search'), class: "button secondary" %>
-      <% end %>
-    </div>
-
-    <div class="patients-table-container">
-      <table>
-        <thead>
-          <tr>
-            <th><%= link_to t('name'), root_path(sort: "name", query: params[:query]) %></th>
-            <th><%= t('identifier') %></th>
-            <th><%= link_to t('registered'), root_path(sort: "created_at", query: params[:query]) %></th>
-            <th><%= t('actions') %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @patients.each do |patient| %>
-            <tr>
-              <td><%= link_to patient.name, patient %></td>
-              <td><%= patient.identifier %></td>
-              <td><%= patient.created_at.strftime("%b %d, %Y") %></td>
-              <td>
-                <%= link_to t('view'), patient, class: "button small secondary" %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- Bottom Section: Full-Width Weekly Calendar -->
+  <!-- Weekly Calendar -->
   <div class="dashboard-section">
     <div class="stat-card">
       <!-- Week Navigation -->
@@ -52,11 +12,13 @@
         <%= link_to "#{t('next_week', default: 'Next Week')} →", root_path(week_offset: @week_offset + 1), class: "button small secondary" %>
       </div>
       
-      <% if @week_offset != 0 %>
-        <div style="text-align: center; margin-bottom: 1rem;">
+      <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem;">
+        <% if @week_offset != 0 %>
           <%= link_to t('today', default: 'Today'), root_path, class: "button small primary" %>
-        </div>
-      <% end %>
+        <% end %>
+        <%= link_to "👥 #{t('view_all_patients')}", patients_path, class: "button small secondary" %>
+        <%= link_to "+ #{t('new_patient')}", new_patient_path, class: "button small primary" %>
+      </div>
       
       <!-- Weekly Calendar Grid with Time Slots -->
       <div style="display: grid; grid-template-columns: 60px repeat(7, 1fr); gap: 0; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; background: white;">

@@ -16,15 +16,5 @@ class DashboardController < ApplicationController
     
     @upcoming_appointments = Consultation.where("date_time > ?", Time.current).order(date_time: :asc)
     
-    @patients = Patient.all
-    if params[:query].present?
-      @patients = @patients.where("name LIKE ?", "%#{params[:query]}%")
-    end
-    
-    if params[:sort].present?
-      @patients = @patients.order(params[:sort])
-    else
-      @patients = @patients.order(created_at: :desc)
-    end
   end
 end

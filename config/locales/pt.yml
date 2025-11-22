@@ -9,6 +9,7 @@ pt:
   back_to_dashboard: "Voltar ao Painel"
   new_patient: "Novo Paciente"
   view_all_patients: "Ver Todos os Pacientes"
+  view_all_patients: "Ver Todos os Pacientes"
   
   # Patient Info
   personal_info: "Informação Pessoal"

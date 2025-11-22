@@ -9,6 +9,7 @@ en:
   back_to_dashboard: "Back to Dashboard"
   new_patient: "New Patient"
   view_all_patients: "View All Patients"
+  view_all_patients: "View All Patients"
   
   # Patient Info
   personal_info: "Personal Information"

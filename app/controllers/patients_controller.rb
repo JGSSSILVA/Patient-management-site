@@ -3,10 +3,15 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: %i[ show edit update destroy ]
 
   def index
+    @patients = Patient.all
     if params[:query].present?
-      @patients = Patient.where("name LIKE ?", "%#{params[:query]}%")
+      @patients = @patients.where("name LIKE ?", "%#{params[:query]}%")
+    end
+    
+    if params[:sort].present?
+      @patients = @patients.order(params[:sort])
     else
-      @patients = Patient.all
+      @patients = @patients.order(created_at: :desc)
     end
   end
 
